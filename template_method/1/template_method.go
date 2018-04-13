@@ -8,7 +8,7 @@ type animal interface {
 
 type Animal struct{}
 
-func (s *Animal) Behavior(a animal) {
+func Behavior(a animal) {
 	a.eat()
 	a.sleep()
 }
