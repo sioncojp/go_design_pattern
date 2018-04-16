@@ -1,24 +1,20 @@
 package adapter
 
-import "fmt"
-
-type FruitPrice interface {
-	getPrice()
+type ChairPerson interface {
+	OrganizeClass()
 }
 
-type Fruit struct {
-	Name string
-	Cost int
+type TaroV2 struct {
+	Taro
 }
 
-type FruitAdapter struct {
-	Fruit
+type Taro struct{}
+
+func (s *TaroV2) OrganizationClass() {
+	println("クラスの面倒みるよ")
+	s.Taro.EnjoyWithClassmate()
 }
 
-func (s *FruitAdapter) GetPrice() {
-	s.Fruit.GetPrice()
-}
-
-func (s *Fruit) GetPrice() {
-	fmt.Printf("%s: %d\n", s.Name, s.Cost)
+func (s *Taro) EnjoyWithClassmate() {
+	println("わいわい")
 }
