@@ -2,12 +2,7 @@ package template_method
 
 import "testing"
 
-func TestLion(t *testing.T) {
-	s := &Lion{}
-	Behavior(s)
-}
-
-func TestBird(t *testing.T) {
-	s := &Bird{}
-	Behavior(s)
+func TestTemplateMethod1(t *testing.T) {
+	s := &Taro{}
+	s.Create(s)
 }

@@ -1,38 +1,33 @@
 package template_method
 
 // 小文字にしてプライベートにする
-type animal interface {
-	eat()
-	sleep()
+type kit interface {
+	cut()
+	build()
+	paint()
 }
 
-type Animal struct{}
-
-func Behavior(a animal) {
-	a.eat()
-	a.sleep()
+type Gundam struct {
 }
 
-type Lion struct {
-	*Animal
+func (s *Gundam) Create(kit kit) {
+	kit.cut()
+	kit.build()
+	kit.paint()
 }
 
-func (s *Lion) eat() {
-	println("肉を食べる")
+type Taro struct {
+	*Gundam
 }
 
-func (s *Lion) sleep() {
-	println("草原で寝る")
+func (s *Taro) cut() {
+	println("ニッパーで切る")
 }
 
-type Bird struct {
-	*Animal
+func (s *Taro) build() {
+	println("組み立てる")
 }
 
-func (s *Bird) eat() {
-	println("虫を食べる")
-}
-
-func (s *Bird) sleep() {
-	println("巣で寝る")
+func (s *Taro) paint() {
+	println("色を塗る")
 }
