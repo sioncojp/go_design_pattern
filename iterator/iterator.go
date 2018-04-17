@@ -22,6 +22,10 @@ type BookshelfIterator struct {
 	index     int
 }
 
+func (s *Bookshelf) Add(b Book) {
+	s.Books = append(s.Books, b)
+}
+
 func (s *Bookshelf) Iterator() Iterator {
 	return &BookshelfIterator{Bookshelf: s}
 }

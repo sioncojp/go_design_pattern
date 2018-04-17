@@ -7,12 +7,10 @@ import (
 
 func TestIterator(t *testing.T) {
 	b := &Bookshelf{}
-	books := []Book{
-		{"a"},
-		{"b"},
-		{"c"},
+	books := []string{"a", "b", "c"}
+	for _, v := range books {
+		b.Add(Book{v})
 	}
-	b.Books = books
 	for i := b.Iterator(); i.HasNext(); {
 		v := i.Next()
 		fmt.Println(v)
