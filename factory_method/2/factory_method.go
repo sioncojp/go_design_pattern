@@ -1,4 +1,4 @@
-package main
+package factory_method
 
 import "fmt"
 
@@ -55,14 +55,14 @@ func (g *gun) getPower() int {
 	return g.power
 }
 
-func getGun(gunType string) (iGun, error) {
+func getGun(gunType string) iGun {
 	if gunType == "ak47" {
-		return newAk47(), nil
+		return newAk47()
 	}
 	if gunType == "musket" {
-		return newMusket(), nil
+		return newMusket()
 	}
-	return nil, fmt.Errorf("Wrong gun type passed")
+	return nil
 }
 
 func printDetails(g iGun) {
@@ -73,8 +73,8 @@ func printDetails(g iGun) {
 }
 
 func main() {
-	ak47, _ := getGun("ak47")
-	musket, _ := getGun("musket")
+	ak47 := getGun("ak47")
+	musket := getGun("musket")
 
 	printDetails(ak47)
 	printDetails(musket)
