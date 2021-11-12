@@ -1,48 +1,28 @@
 package bridge
 
-type Weapon interface {
-	Attack() string
-	Repair() string
-}
+import "fmt"
 
-type Bow struct{}
+func main() {
+	hpPrinter := &hp{}
+	epsonPrinter := &epson{}
 
-func (b *Bow) Attack() string {
-	return "bow Attack"
-}
-func (b *Bow) Repair() string {
-	return "bow Repair"
-}
+	macComputer := &mac{}
 
-type Sword struct{}
+	macComputer.setPrinter(hpPrinter)
+	macComputer.print()
+	fmt.Println()
 
-func (s *Sword) Attack() string {
-	return "sword Attack"
-}
-func (s *Sword) Repair() string {
-	return "sword Repair"
-}
+	macComputer.setPrinter(epsonPrinter)
+	macComputer.print()
+	fmt.Println()
 
-type WeaponHandler interface {
-	Handle() string
-}
+	winComputer := &windows{}
 
-type Warrior struct {
-	weapon Weapon
-}
+	winComputer.setPrinter(hpPrinter)
+	winComputer.print()
+	fmt.Println()
 
-func (w *Warrior) Handle() string {
-	return w.weapon.Attack()
-}
-
-type Smith struct {
-	weapon Weapon
-}
-
-func (s *Smith) Handle() string {
-	return s.weapon.Repair()
-}
-
-func Do(w WeaponHandler) string {
-	return w.Handle()
+	winComputer.setPrinter(epsonPrinter)
+	winComputer.print()
+	fmt.Println()
 }
