@@ -1,20 +1,15 @@
 package adapter
 
-type ChairPerson interface {
-	OrganizeClass()
-}
+func main() {
+	client := &client{}
+	mac := &mac{}
 
-type TaroV2 struct {
-	Taro
-}
+	client.insertLightningConnectorIntoComputer(mac)
 
-type Taro struct{}
+	windowsMachine := &windows{}
+	windowsMachineAdapter := &windowsAdapter{
+		windowMachine: windowsMachine,
+	}
 
-func (s *TaroV2) OrganizationClass() {
-	println("クラスの面倒みるよ")
-	s.Taro.EnjoyWithClassmate()
-}
-
-func (s *Taro) EnjoyWithClassmate() {
-	println("わいわい")
+	client.insertLightningConnectorIntoComputer(windowsMachineAdapter)
 }

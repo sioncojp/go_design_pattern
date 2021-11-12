@@ -43,3 +43,29 @@
 - [observer](./observer)
 - [strategy](./strategy)
 - [visitor](./visitor)
+
+## 実装例
+|pattern|example|
+|:---|:---|
+|abstract_factory||
+|builder||
+|factory_method||
+|prototype||
+|singleton||
+|adapter||
+|bridge||
+|composite||
+|decorator||
+|facade||
+|flyweight||
+|proxy||
+|chain_of_repository||
+|iterator||
+|Memento||
+|state||
+|template_method||
+|command||
+|mediator||
+|observer||
+|strategy||
+|visitor||

@@ -2,43 +2,24 @@ package prototype
 
 import "fmt"
 
-type cloneabler interface {
-	Get() string
-	clone() cloneabler
-}
+func main() {
+	file1 := &file{name: "File1"}
+	file2 := &file{name: "File2"}
+	file3 := &file{name: "File3"}
 
-type Person struct {
-	cloneable cloneabler
-}
+	folder1 := &folder{
+		children: []inode{file1},
+		name:     "Folder1",
+	}
 
-type Pepper struct {
-	Figure string
-}
+	folder2 := &folder{
+		children: []inode{folder1, file2, file3},
+		name:     "Folder2",
+	}
+	fmt.Println("\nPrinting hierarchy for Folder2")
+	folder2.print("  ")
 
-func Draw(s string) *Pepper {
-	fmt.Printf("%sを書くよ\n", s)
-	return &Pepper{Figure: s}
-}
-
-func Cut(s string) *Pepper {
-	pepper := Draw(s)
-	fmt.Printf("%sの形に切るお\n", pepper.Figure)
-	return pepper
-}
-
-func (s *Person) Register(c cloneabler) {
-	s.cloneable = c
-}
-
-func (s *Person) CreateClone() cloneabler {
-	return s.cloneable.clone()
-}
-
-func (s *Pepper) Get() string {
-	return s.Figure
-}
-
-// スライスならdeep copyをする必要がある
-func (s *Pepper) clone() cloneabler {
-	return &Pepper{s.Figure}
+	cloneFolder := folder2.clone()
+	fmt.Println("\nPrinting hierarchy for clone Folder")
+	cloneFolder.print("  ")
 }
